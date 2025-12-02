@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+import os
 from django.contrib import admin
 from django.urls import path, include
+codespace_name = os.environ.get('CODESPACE_NAME', '')
+base_url = f"https://{codespace_name}-8000.app.github.dev" if codespace_name else "http://localhost:8000"
 from rest_framework import routers
 from . import views
 
